@@ -2,6 +2,20 @@ require('dotenv').config();
 const express = require('express');
 const cloudinary = require('cloudinary').v2;
 const routeAdmin = require('../Routers/routeAdmin');
+const { Pool } = require('pg');
+
+const pool = new Pool({
+  user: process.env.PGUSER,
+  host: process.env.PGHOST,
+  databse: process.env.PGDATABASE,
+  port: process.env.PGPORT,
+  password: process.env.PGPASSWORD,
+  connectionTimeoutMillis: 0,
+  idleTimeoutMillis: 600000,
+  max: 50
+});
+
+pool.connect();
 
 // Already using cloudinary in the env file this is just for alternatives
 // Enter your cloudinary credentials below                                           
