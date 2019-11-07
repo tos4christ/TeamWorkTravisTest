@@ -1,5 +1,7 @@
-const pool = require('../Models/poolConnection');
+//const pool = require('../Models/poolConnection');
 const feeds = require('../Models/articleSchema');
+const { Pool } = require('pg').Pool;
+const pool = new Pool();
 
 
 const getFeed = (req, res, next) => {

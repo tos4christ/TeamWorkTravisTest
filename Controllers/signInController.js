@@ -1,7 +1,9 @@
 const bcrypt = require('bcrypt');
-const pool = require('../Models/poolConnection');
+//const pool = require('../Models/poolConnection');
 const signInQuery = require('../Models/signInModel');
 const jwt = require('jsonwebtoken');
+const { Pool } = require('pg').Pool;
+const pool = new Pool();
 
 const signIn = (req, res, next) => {
   const body = req.body;

@@ -1,7 +1,9 @@
-const pool = require('../Models/poolConnection');
+// const pool = require('../Models/poolConnection');
 const userDetails = require('../utilities/getTokenUser');
 const gifSchema = require('../Models/gifSchema');
 const cloudinary = require('cloudinary').v2;
+const { Pool } = require('pg').Pool;
+const pool = new Pool();
 
 const gifController = {};
 
