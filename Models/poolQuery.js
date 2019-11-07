@@ -16,7 +16,7 @@ CREATE TABLE admin_table
   CONSTRAINT admin_table_email_key UNIQUE (email)
 );
 
-CREATE SEQUENCE public.admin_table_admin_id_seq
+CREATE SEQUENCE admin_table_admin_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -42,10 +42,10 @@ CREATE TABLE article_comment
 
 CREATE TABLE articles
 (
-  article_id integer NOT NULL ,
+  article_id integer NOT NULL,
   article_title text NOT NULL,
   article_text text NOT NULL,
-  appr_status boolean DEFAULT true,
+  appr_status boolean,
   employee_id integer,
   creation_date date NOT NULL,
   CONSTRAINT articles_pkey PRIMARY KEY (article_id),
@@ -54,7 +54,7 @@ CREATE TABLE articles
       ON UPDATE CASCADE ON DELETE NO ACTION
 );
 
-CREATE SEQUENCE public.articles_article_id_seq
+CREATE SEQUENCE articles_article_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -63,7 +63,7 @@ CREATE SEQUENCE public.articles_article_id_seq
 
 CREATE TABLE comments_table
 (
-  comment_id integer NOT NULL DEFAULT,
+  comment_id integer NOT NULL,
   comment_text text NOT NULL,
   employee_id integer,
   creation_date date NOT NULL,
@@ -73,7 +73,7 @@ CREATE TABLE comments_table
       ON UPDATE CASCADE ON DELETE NO ACTION
 );
 
-CREATE SEQUENCE public.comments_table_comment_id_seq
+CREATE SEQUENCE comments_table_comment_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -97,7 +97,7 @@ CREATE TABLE employees
   CONSTRAINT employees_employee_no_key UNIQUE (employee_no)
 );
 
-CREATE SEQUENCE public.employees_employee_id_seq
+CREATE SEQUENCE employees_employee_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -135,12 +135,11 @@ CREATE TABLE gif_table
       ON UPDATE CASCADE ON DELETE NO ACTION
 );
 
-CREATE SEQUENCE public.gif_table_gif_id_seq
+CREATE SEQUENCE gif_table_gif_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
-    CACHE 1;
-  RETURNING *`;
+    CACHE 1;  RETURNING *`;
 
 module.exports = query;
