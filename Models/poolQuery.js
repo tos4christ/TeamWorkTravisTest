@@ -1,45 +1,4 @@
 const query = `
-CREATE TABLE admin_table
-(
-  admin_id integer NOT NULL,
-  firstname text NOT NULL,
-  lastname text NOT NULL,
-  email text NOT NULL,
-  admin_password text NOT NULL,
-  gender text NOT NULL,
-  department text NOT NULL,
-  jobrole text NOT NULL,
-  admin_no integer NOT NULL,
-  creation_date date NOT NULL,
-  CONSTRAINT admin_table_pkey PRIMARY KEY (admin_id),
-  CONSTRAINT admin_table_admin_no_key UNIQUE (admin_no),
-  CONSTRAINT admin_table_email_key UNIQUE (email)
-);
-CREATE SEQUENCE admin_table_admin_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-ALTER SEQUENCE admin_table_admin_id_seq OWNED BY admin_table.admin_id;
-
-CREATE TABLE article_comment
-(
-  article_id integer NOT NULL,
-  comment_id integer NOT NULL,
-  employee_id integer NOT NULL,
-  CONSTRAINT article_comment_pkey PRIMARY KEY (article_id, comment_id, employee_id),
-  CONSTRAINT article_comment_article_id_fkey FOREIGN KEY (article_id)
-      REFERENCES articles (article_id) MATCH SIMPLE
-      ON UPDATE CASCADE ON DELETE NO ACTION,
-  CONSTRAINT article_comment_comment_id_fkey FOREIGN KEY (comment_id)
-      REFERENCES comments_table (comment_id) MATCH SIMPLE
-      ON UPDATE CASCADE ON DELETE NO ACTION,
-  CONSTRAINT article_comment_employee_id_fkey FOREIGN KEY (employee_id)
-      REFERENCES employees (employee_id) MATCH SIMPLE
-      ON UPDATE CASCADE ON DELETE NO ACTION
-);
-
 CREATE TABLE articles( article_id integer NOT NULL,
   article_title text NOT NULL,
   article_text text NOT NULL,
