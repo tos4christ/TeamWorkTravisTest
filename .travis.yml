@@ -12,7 +12,7 @@ before_script:
   - npm install
   - npm install -g jasmine
   - npm run test-init
-  - psql -u root --password="" < test.sql
+  - psql -u --password="" < test.sql
 
 script:
   - npm run coverage
