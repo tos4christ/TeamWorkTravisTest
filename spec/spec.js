@@ -1,5 +1,6 @@
 const Request = require('request');
 const fs = require('fs');
+const dbsetup = require('../db');
 //DONE
 describe('Server setup', () => {
   let server;
@@ -85,6 +86,7 @@ describe('API endpoint tests', () => {
   let giffile;
   beforeAll(() => {
     server = require('../server/server');
+    dbsetup();
   });
 
   // DONE

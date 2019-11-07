@@ -4,8 +4,6 @@ const cloudinary = require('cloudinary').v2;
 const routeAdmin = require('../Routers/routeAdmin');
 const pool = require('../Models/poolConnection');
 
-pool.connect();
-
 // Already using cloudinary in the env file this is just for alternatives
 // Enter your cloudinary credentials below                                           
 cloudinary.config({cloud_name: "tos4christ", 

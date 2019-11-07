@@ -10,16 +10,12 @@ addons:
 
 before_script:
   - npm install
-  - psql -c 'create database teamwork;' -U postgres
   - npm install -g jasmine
   - npm run test-init
- 
+  - psql -c 'create database teamwork;' -U postgres
 
 script:
-  - npm run buildtables
-  
-  
-
-after_success:
   - npm run coverage
+  
+after_success:
   - npm run coveralls

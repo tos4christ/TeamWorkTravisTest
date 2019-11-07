@@ -12,7 +12,6 @@ gifController.createGif = (req, res, next) => {
 
   // cloudinary implementation
   let filename = req.files.gifPost.path;
-  console.log('the user', user);
   
   cloudinary.uploader.upload(filename, {tags: "gotemps", resource_type: "auto"})
     .then((file) => {
