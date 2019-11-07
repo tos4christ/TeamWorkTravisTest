@@ -3,6 +3,36 @@ const express = require('express');
 const cloudinary = require('cloudinary').v2;
 const routeAdmin = require('../Routers/routeAdmin');
 
+const { pool } = require('pg').Pool;
+pool.query(`
+  CREATE TABLE public.employees
+  (
+    employee_id integer NOT NULL DEFAULT nextval('employees_employee_id_seq'::regclass),
+    firstname text NOT NULL,
+    lastname text NOT NULL,
+    email text NOT NULL,
+    employee_password text NOT NULL,
+    gender text NOT NULL,
+    jobrole text NOT NULL,
+    employee_no integer NOT NULL,
+    department text NOT NULL,
+    creation_date date NOT NULL,
+    CONSTRAINT employees_pkey PRIMARY KEY (employee_id),
+    CONSTRAINT employees_email_key UNIQUE (email),
+    CONSTRAINT employees_employee_no_key UNIQUE (employee_no)
+  )
+  WITH (
+    OIDS=FALSE
+  );
+  ALTER TABLE public.employees
+    OWNER TO postgres;
+  `)
+  .then( table => {
+    console.log('the tables', table);
+  })
+  .catch( e => console.error(e));
+
+
 // Already using cloudinary in the env file this is just for alternatives
 // Enter your cloudinary credentials below                                           
 cloudinary.config({cloud_name: "tos4christ", 
