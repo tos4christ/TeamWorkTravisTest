@@ -3,6 +3,7 @@ const fs = require('fs');
 
 //DONE
 describe('Server setup', () => {
+  console.log('test has started');
   let server;
   beforeAll(() => {
     server = require('../server/server');
