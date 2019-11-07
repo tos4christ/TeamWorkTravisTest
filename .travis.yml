@@ -6,7 +6,7 @@ services:
   - postgresql
 
 before_install:
-  - npm run db
+ 
 
 addons:
   postgresql: "9.5"
@@ -16,6 +16,7 @@ before_script:
   - npm install -g jasmine
   - npm run test-init
   - psql -c 'create database teamwork;' -U postgres
+   - npm run db
 
 script:
   - npm run coverage
