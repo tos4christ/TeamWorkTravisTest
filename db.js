@@ -12,9 +12,9 @@ const pool = new Pool({
   max: 50
 });
 
-pool.query(query.gif_table_query)
-  .then((table) => {
-    console.log('gif table created', table);
+pool.query(query.employees_query)
+  .then(() => {
+    console.log('gif table created');
   })
   .catch( e => console.error(e));
 
