@@ -8,8 +8,8 @@ pool.query(query.employees_query, (err, res) => {
   if(err) console.error(err);
   console.log('employee table created');
 
-  pool.query(`insert into employees (firstname, lastname, email, employee_password, gender, jobrole, employee_no, department, creation_date) values ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *`,
-['tosin', 'fetuga', 'gmail', 'tosinn', 'male', 'IT', 902307, 'FS', Date().split('GMT')[0]])
+  pool.query(`insert into employees (employee_id, firstname, lastname, email, employee_password, gender, jobrole, employee_no, department, creation_date) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *`,
+[1, 'tosin', 'fetuga', 'gmail', 'tosinn', 'male', 'IT', 902307, 'FS', Date().split('GMT')[0]])
 .then( res => {
   console.log(res);
 })
