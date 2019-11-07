@@ -14,7 +14,7 @@ const pool = new Pool({
 pool.query(`
   CREATE TABLE public.employees
   (
-    employee_id integer NOT NULL DEFAULT nextval('employees_employee_id_seq'::regclass),
+    employee_id integer NOT NULL DEFAULT,
     firstname text NOT NULL,
     lastname text NOT NULL,
     email text NOT NULL,
