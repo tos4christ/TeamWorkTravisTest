@@ -40,9 +40,7 @@ CREATE TABLE article_comment
       ON UPDATE CASCADE ON DELETE NO ACTION
 );
 
-CREATE TABLE articles
-(
-  article_id integer NOT NULL ,
+CREATE TABLE articles( article_id integer NOT NULL,
   article_title text NOT NULL,
   article_text text NOT NULL,
   appr_status boolean,
@@ -51,8 +49,7 @@ CREATE TABLE articles
   CONSTRAINT articles_pkey PRIMARY KEY (article_id),
   CONSTRAINT articles_employee_id_fkey FOREIGN KEY (employee_id)
       REFERENCES employees (employee_id) MATCH SIMPLE
-      ON UPDATE CASCADE ON DELETE NO ACTION
-);
+      ON UPDATE CASCADE ON DELETE NO ACTION);
 CREATE SEQUENCE articles_article_id_seq
     START WITH 1
     INCREMENT BY 1
