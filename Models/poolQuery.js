@@ -1,7 +1,7 @@
 const queries = {};
 
 queries.admin_table_query = `
-CREAT TABLE admin_table
+CREATE TABLE admin_table
 (
   admin_id integer NOT NULL,
   firstname text NOT NULL,
