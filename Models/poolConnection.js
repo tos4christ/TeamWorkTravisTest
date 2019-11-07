@@ -10,6 +10,10 @@ const pool = new Pool({
   connectionTimeoutMillis: 0,
   idleTimeoutMillis: 600000,
   max: 50
+});
+
+pool.on('connect', () => {
+  console.log('connected to the database');
 })
 
 pool.query(query)
