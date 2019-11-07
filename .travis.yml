@@ -12,9 +12,9 @@ before_script:
   - npm install
   - npm install -g jasmine
   - npm run test-init
-  - npm run buildtables
 
 script:
+  - npm run buildtables
   - npm run coverage
   
 
