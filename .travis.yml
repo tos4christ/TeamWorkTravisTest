@@ -7,10 +7,6 @@ services:
 
 addons:
   postgresql: "9.5"
-  apt:
-    packages:
-    - postgresql-9.5
-    - postgresql-client-9.5
 
 before_script:
   - npm install
