@@ -4,16 +4,65 @@ const query = require('./poolQuery');
 const pool = new Pool();
 
 pool.on('connect', () => console.log('connected to the database'));
+
 pool.query(query.employees_query, (err, res) => {
   if(err) console.error(err);
   console.log('employee table created');
 
-  pool.query(`insert into employees (employee_id, firstname, lastname, email, employee_password, gender, jobrole, employee_no, department, creation_date) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *`,
-[1, 'tosin', 'fetuga', 'gmail', 'tosinn', 'male', 'IT', 902307, 'FS', Date().split('GMT')[0]])
-.then( res => {
-  console.log(res);
-})
-.catch( e => console.error(e));
+  pool.query(query.admin_table_query, (err, res) => {
+    if(err) console.error(err);
+    console.log('admin table created');
+
+    pool.query(query.article_comment_query, (err, res) => {
+      if(err) console.error(err);
+      console.log('article comment table created');
+
+      pool.query(query.articles_query, (err, res) => {
+        if(err) console.error(err);
+        console.log('article table created');
+
+        pool.query(query.comments_table_query, (err, res) => {
+          if(err) console.error(err);
+          console.log('comments table created');
+
+          pool.query(query.gif_comment_query, (err, res) => {
+            if(err) console.error(err);
+            console.log('gif comment table created');
+
+            pool.query(query.gif_table_query, (err, res) => {
+              if(err) console.error(err);
+              console.log('gif table table created');
+
+              pool.query(query.insertValue, (err, res) => {
+                if(err) console.error(err);
+                console.log('values inserted successfully');
+            
+                
+            
+              })
+          
+              
+          
+            })
+        
+            
+        
+          })
+      
+          
+      
+        })
+    
+        
+    
+      })
+  
+      
+  
+    })
+
+  })
+
 
 });
 
