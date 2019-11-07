@@ -15,8 +15,6 @@ CREATE TABLE admin_table
   CONSTRAINT admin_table_admin_no_key UNIQUE (admin_no),
   CONSTRAINT admin_table_email_key UNIQUE (email)
 );
-ALTER TABLE admin_table
-  OWNER TO postgres;
 
 CREATE SEQUENCE public.admin_table_admin_id_seq
     START WITH 1
@@ -24,9 +22,6 @@ CREATE SEQUENCE public.admin_table_admin_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-
-ALTER SEQUENCE public.admin_table_admin_id_seq OWNED BY public.admin_table.admin_id;
-
 
 CREATE TABLE article_comment
 (
@@ -44,9 +39,6 @@ CREATE TABLE article_comment
       REFERENCES employees (employee_id) MATCH SIMPLE
       ON UPDATE CASCADE ON DELETE NO ACTION
 );
-ALTER TABLE article_comment
-  OWNER TO postgres;
-
 
 CREATE TABLE articles
 (
@@ -61,8 +53,6 @@ CREATE TABLE articles
       REFERENCES employees (employee_id) MATCH SIMPLE
       ON UPDATE CASCADE ON DELETE NO ACTION
 );
-ALTER TABLE articles
-  OWNER TO postgres;
 
 CREATE SEQUENCE public.articles_article_id_seq
     START WITH 1
@@ -70,9 +60,6 @@ CREATE SEQUENCE public.articles_article_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-
-ALTER SEQUENCE public.articles_article_id_seq OWNED BY public.articles.article_id;
-
 
 CREATE TABLE comments_table
 (
@@ -85,8 +72,6 @@ CREATE TABLE comments_table
       REFERENCES employees (employee_id) MATCH SIMPLE
       ON UPDATE CASCADE ON DELETE NO ACTION
 );
-ALTER TABLE comments_table
-  OWNER TO postgres;
 
 CREATE SEQUENCE public.comments_table_comment_id_seq
     START WITH 1
@@ -94,9 +79,6 @@ CREATE SEQUENCE public.comments_table_comment_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-
-ALTER SEQUENCE public.comments_table_comment_id_seq OWNED BY public.comments_table.comment_id;
-
 
 CREATE TABLE employees
 (
@@ -114,8 +96,6 @@ CREATE TABLE employees
   CONSTRAINT employees_email_key UNIQUE (email),
   CONSTRAINT employees_employee_no_key UNIQUE (employee_no)
 );
-ALTER TABLE employees
-  OWNER TO postgres;
 
 CREATE SEQUENCE public.employees_employee_id_seq
     START WITH 1
@@ -123,9 +103,6 @@ CREATE SEQUENCE public.employees_employee_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-
-ALTER SEQUENCE public.employees_employee_id_seq OWNED BY public.employees.employee_id;
-
 
 CREATE TABLE gif_comment
 (
@@ -143,9 +120,6 @@ CREATE TABLE gif_comment
       REFERENCES gif_table (gif_id) MATCH SIMPLE
       ON UPDATE CASCADE ON DELETE NO ACTION
 );
-ALTER TABLE gif_comment
-  OWNER TO postgres;
-
 
 CREATE TABLE gif_table
 (
@@ -160,8 +134,6 @@ CREATE TABLE gif_table
       REFERENCES employees (employee_id) MATCH SIMPLE
       ON UPDATE CASCADE ON DELETE NO ACTION
 );
-ALTER TABLE gif_table
-  OWNER TO postgres;
 
 CREATE SEQUENCE public.gif_table_gif_id_seq
     START WITH 1
@@ -169,7 +141,6 @@ CREATE SEQUENCE public.gif_table_gif_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-
-ALTER SEQUENCE public.gif_table_gif_id_seq OWNED BY public.gif_table.gif_id; `;
+  RETURNING *`;
 
 module.exports = query;
