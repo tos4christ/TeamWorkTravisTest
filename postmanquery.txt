@@ -1,0 +1,16 @@
+{
+	"firstname": "wumi",
+	"lastname": "fetuga",
+	"gender": "female",
+	"department": "I.T",
+	"jobrole": "FRONT END",
+	"employee_no": "902308",
+	"email": "kolawolehorlawummy@gmail.com",
+	"employee_password": "wumi"
+}
+
+token for kolawolehorlawummy
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjkwMjMwOCwidXNlcm5hbWUiOiJrb2xhd29sZWhvcmxhd3VtbXlAZ21haWwuY29tIiwiaWF0IjoxNTczMDM4NDc5LCJleHAiOjE1NzMwMzk5MTl9.sESptIezWFgQDhZSKHpob04HE0f8Rc5a-BcE6-BCOpY"
+
+token for tosin
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjkwMjMwNywidXNlcm5hbWUiOiJnbnp0cmFkZUBnbWFpbC5jb20iLCJpYXQiOjE1NzMwNDA1ODgsImV4cCI6MTU3MzA0MjAyOH0.TD3j6Xj8sa0dc_bJ8XbpfhhDpMRkZrXkdB-AM1LXqfM"

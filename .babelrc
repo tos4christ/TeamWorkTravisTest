@@ -1,0 +1,16 @@
+{
+	"presets" : ["es2015"]
+}
+
+/*
+
+npm install --save-dev @babel/core @babel/cli @babel/node @babel/plugin-transform-runtime @babel/preset-env @babel/register @babel/runtime babel-loader
+
+
+
+{
+   "presets": ["@babel/preset-env"],
+   "plugins": [["@babel/transform-runtime"]]
+}
+
+*/
