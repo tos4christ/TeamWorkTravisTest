@@ -26,6 +26,11 @@ pool.query(query.gif_table_query)
                         pool.query(query.admin_table_query)
                           .then(() => {
                             console.log('admin table created');
+                            pool.query(query.insertValue)
+                              .then(() => {
+                                console.log('values inserted');
+                              })
+                              .catch(e => console.error(e));
                           })
                           .catch( e => console.error(e));
                       })
