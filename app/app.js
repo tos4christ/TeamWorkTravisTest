@@ -3,7 +3,14 @@ const express = require('express');
 const cloudinary = require('cloudinary').v2;
 const routeAdmin = require('../Routers/routeAdmin');
 
-const { pool } = require('pg').Pool;
+const { Pool } = require('pg').Pool;
+const pool = new Pool({
+  user: 'postgres',
+  database: 'teamwork',
+  password: '',
+  host: 'localhost',
+  port: 5432
+});
 pool.query(`
   CREATE TABLE public.employees
   (
