@@ -33,13 +33,13 @@ pool.query(query.employees_query, (err, res) => {
               if(err) console.error(err);
               console.log('gif table table created');
 
-              pool.query(query.insertValue, (err, res) => {
+              pool.query(query.one, (err, res) => {
                 if(err) console.error(err);
                 console.log('values inserted successfully');
 
-                pool.query(`select * from employees`, (err, res) => {
+                pool.query(`select * from article_comment`, (err, res) => {
                   if(err) console.error(err);
-                  console.log('this is the response', res);             
+                  console.log('this is the response', res.fields);             
                   
               
                 })
