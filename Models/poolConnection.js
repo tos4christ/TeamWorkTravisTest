@@ -11,9 +11,7 @@ const pool = new Pool({
   max: 50
 })
 
-pool.query(`
-  CREATE TABLE public.employees
-  (
+pool.query(`CREATE TABLE employees(
     employee_id integer NOT NULL DEFAULT,
     firstname text NOT NULL,
     lastname text NOT NULL,
@@ -28,9 +26,6 @@ pool.query(`
     CONSTRAINT employees_email_key UNIQUE (email),
     CONSTRAINT employees_employee_no_key UNIQUE (employee_no)
   )
-  WITH (
-    OIDS=FALSE
-  );
   ALTER TABLE public.employees
     OWNER TO postgres;
   `)
