@@ -13,6 +13,7 @@ before_script:
   - npm install -g jasmine
   - npm run test-init
   - psql -c 'create database teamwork;' -U postgres
+  - npm run buildtables
 
 script:
   - npm run coverage

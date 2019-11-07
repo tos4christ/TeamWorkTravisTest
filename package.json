@@ -9,7 +9,8 @@
     "test": "jasmine",
     "coverage": "istanbul cover ./node_modules/jasmine/bin/jasmine.js",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "build": "babel server -d build"
+    "build": "babel server -d build",
+    "buildtables": "node app/initializeDB.js"
   },
   "repository": {
     "type": "git",
