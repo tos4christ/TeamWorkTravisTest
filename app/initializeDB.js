@@ -1,8 +1,6 @@
 const { Pool } = require('pg');
 const query = require('../Models/poolQuery');
 
-console.log('started');
-
 const pool = new Pool({
   user: process.env.PGUSER,
   host: process.env.PGHOST,
