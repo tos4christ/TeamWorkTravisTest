@@ -140,6 +140,6 @@ CREATE SEQUENCE gif_table_gif_id_seq
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
-    CACHE 1;  RETURNING *`;
+    CACHE 1; `;
 
 module.exports = query;
