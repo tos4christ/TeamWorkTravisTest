@@ -12,8 +12,6 @@ const pool = new Pool({
   max: 50
 });
 
-pool.on('connect', () => console.log('connected to the database'));
-
 pool.query(query.gif_table_query)
   .then(() => {
     console.log('gif table created');
