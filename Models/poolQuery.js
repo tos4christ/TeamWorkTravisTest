@@ -1,5 +1,5 @@
 const query = `
-CREATE TABLE admin_table
+CREATE TABLE public.admin_table
 (
   admin_id integer NOT NULL,
   firstname text NOT NULL,
@@ -15,15 +15,15 @@ CREATE TABLE admin_table
   CONSTRAINT admin_table_admin_no_key UNIQUE (admin_no),
   CONSTRAINT admin_table_email_key UNIQUE (email)
 );
-CREATE SEQUENCE admin_table_admin_id_seq
+CREATE SEQUENCE public.admin_table_admin_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER SEQUENCE admin_table_admin_id_seq OWNED BY admin_table.admin_id;
+ALTER SEQUENCE public.admin_table_admin_id_seq OWNED BY public.admin_table.admin_id;
 
-CREATE TABLE article_comment
+CREATE TABLE public.article_comment
 (
   article_id integer NOT NULL,
   comment_id integer NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE article_comment
       ON UPDATE CASCADE ON DELETE NO ACTION
 );
 
-CREATE TABLE articles
+CREATE TABLE public.articles
 (
   article_id integer NOT NULL ,
   article_title text NOT NULL,
@@ -53,15 +53,15 @@ CREATE TABLE articles
       REFERENCES employees (employee_id) MATCH SIMPLE
       ON UPDATE CASCADE ON DELETE NO ACTION
 );
-CREATE SEQUENCE articles_article_id_seq
+CREATE SEQUENCE public.articles_article_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER SEQUENCE articles_article_id_seq OWNED BY articles.article_id;
+ALTER SEQUENCE public.articles_article_id_seq OWNED BY public.articles.article_id;
 
-CREATE TABLE comments_table
+CREATE TABLE public.comments_table
 (
   comment_id integer NOT NULL,
   comment_text text NOT NULL,
@@ -72,15 +72,15 @@ CREATE TABLE comments_table
       REFERENCES employees (employee_id) MATCH SIMPLE
       ON UPDATE CASCADE ON DELETE NO ACTION
 );
-CREATE SEQUENCE comments_table_comment_id_seq
+CREATE SEQUENCE public.comments_table_comment_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER SEQUENCE comments_table_comment_id_seq OWNED BY comments_table.comment_id;
+ALTER SEQUENCE public.comments_table_comment_id_seq OWNED BY public.comments_table.comment_id;
 
-CREATE TABLE employees
+CREATE TABLE public.employees
 (
   employee_id integer NOT NULL,
   firstname text NOT NULL,
@@ -96,15 +96,15 @@ CREATE TABLE employees
   CONSTRAINT employees_email_key UNIQUE (email),
   CONSTRAINT employees_employee_no_key UNIQUE (employee_no)
 );
-CREATE SEQUENCE employees_employee_id_seq
+CREATE SEQUENCE public.employees_employee_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER SEQUENCE employees_employee_id_seq OWNED BY employees.employee_id;
+ALTER SEQUENCE public.employees_employee_id_seq OWNED BY public.employees.employee_id;
 
-CREATE TABLE gif_comment
+CREATE TABLE public.gif_comment
 (
   gif_id integer NOT NULL,
   comment_id integer NOT NULL,
@@ -121,7 +121,7 @@ CREATE TABLE gif_comment
       ON UPDATE CASCADE ON DELETE NO ACTION
 );
 
-CREATE TABLE gif_table
+CREATE TABLE public.gif_table
 (
   gif_id integer NOT NULL,
   gif_title text NOT NULL,
@@ -134,12 +134,12 @@ CREATE TABLE gif_table
       REFERENCES employees (employee_id) MATCH SIMPLE
       ON UPDATE CASCADE ON DELETE NO ACTION
 );
-CREATE SEQUENCE gif_table_gif_id_seq
+CREATE SEQUENCE public.gif_table_gif_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER SEQUENCE gif_table_gif_id_seq OWNED BY gif_table.gif_id;`;
+ALTER SEQUENCE public.gif_table_gif_id_seq OWNED BY public.gif_table.gif_id;`;
 
 module.exports = query;
