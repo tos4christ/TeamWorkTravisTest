@@ -10,8 +10,7 @@ gifController.createGif = (req, res, next) => {
   const user = userDetails(token);
   const {gif_title, appr_status} = req.body;
   const date = Date().split('GMT')[0];
-
-  console.log(req.files);
+  
   // cloudinary implementation
   let filename = req.files.gifPost.path;
   
