@@ -8,11 +8,13 @@ services:
 addons:
   postgresql: "9.5"
 
+before_install:
+  - psql -u root --password="" < test.sql
+
 before_script:
   - npm install
   - npm install -g jasmine
   - npm run test-init
-  - psql -u --password="" < test.sql
 
 script:
   - npm run coverage
