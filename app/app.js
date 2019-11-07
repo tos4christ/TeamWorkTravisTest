@@ -2,7 +2,6 @@ require('dotenv').config();
 const express = require('express');
 const cloudinary = require('cloudinary').v2;
 const routeAdmin = require('../Routers/routeAdmin');
-const pool = require('../Models/poolConnection');
 
 // Already using cloudinary in the env file this is just for alternatives
 // Enter your cloudinary credentials below                                           
