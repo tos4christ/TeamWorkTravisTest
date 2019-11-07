@@ -4,6 +4,7 @@ const cloudinary = require('cloudinary').v2;
 const routeAdmin = require('../Routers/routeAdmin');
 const pool = require('../Models/poolConnection');
 
+pool.connect();
 pool.on('connect', () => console.log('database connected'));
 
 // Already using cloudinary in the env file this is just for alternatives
