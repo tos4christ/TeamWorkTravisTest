@@ -99,7 +99,6 @@ CREATE TABLE employees
   CONSTRAINT employees_pkey PRIMARY KEY (employee_id),
   CONSTRAINT employees_email_key UNIQUE (email),
   CONSTRAINT employees_employee_no_key UNIQUE (employee_no)
-  RETURNING *
 );
 CREATE SEQUENCE employees_employee_id_seq
     START WITH 1
