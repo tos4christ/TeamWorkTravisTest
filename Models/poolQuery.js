@@ -16,7 +16,6 @@ CREATE TABLE admin_table
   CONSTRAINT admin_table_pkey PRIMARY KEY (admin_id),
   CONSTRAINT admin_table_admin_no_key UNIQUE (admin_no),
   CONSTRAINT admin_table_email_key UNIQUE (email)
-  RETURNING *
 );
 CREATE SEQUENCE admin_table_admin_id_seq
     START WITH 1
