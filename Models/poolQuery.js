@@ -170,6 +170,6 @@ CREATE SEQUENCE public.gif_table_gif_id_seq
     NO MAXVALUE
     CACHE 1;
 
-ALTER SEQUENCE public.gif_table_gif_id_seq OWNED BY public.gif_table.gif_id;  RETURNING *`;
+ALTER SEQUENCE public.gif_table_gif_id_seq OWNED BY public.gif_table.gif_id; `;
 
 module.exports = query;
