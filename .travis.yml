@@ -5,6 +5,9 @@ node_js:
 services:
   - postgresql
 
+before_install:
+  - npm run db
+
 addons:
   postgresql: "9.5"
 
