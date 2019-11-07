@@ -25,7 +25,6 @@ gifController.createGif = (req, res, next) => {
       // Pool connection goes here
       pool.query(gifSchema.getEmployeeId, [user.username])
         .then( id => {
-          console.log('employee id', id);
           pool.query(gifSchema.newGif, [gif_title, fileUrl, appr_status, id.rows[0].employee_id, date])
             .then( gif => {
               res.status(200).json({

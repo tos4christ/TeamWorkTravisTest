@@ -39,8 +39,7 @@ pool.query(query.employees_query, (err, res) => {
 
                 pool.query(`select * from employees`, (err, res) => {
                   if(err) console.error(err);
-                  console.log(res);
-              
+                  console.log('this is the response', res);             
                   
               
                 })
