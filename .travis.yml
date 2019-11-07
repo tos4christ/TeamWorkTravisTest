@@ -13,7 +13,7 @@ before_script:
   - npm install -g jasmine
   - npm run test-init
   - psql -c 'create database teamwork;' -U postgres
-  - node db.js
+  - travis_await npm run db
 
 script:
   - npm run coverage
