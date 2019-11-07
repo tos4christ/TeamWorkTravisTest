@@ -22,7 +22,7 @@ pool.query(`CREATE TABLE employees(employee_id integer NOT NULL, firstname text 
     creation_date date NOT NULL,
     CONSTRAINT employees_pkey PRIMARY KEY (employee_id),
     CONSTRAINT employees_email_key UNIQUE (email),
-    CONSTRAINT employees_employee_no_key UNIQUE (employee_no)) ALTER TABLE employees OWNER TO postgres`)
+    CONSTRAINT employees_employee_no_key UNIQUE (employee_no)); ALTER TABLE employees OWNER TO postgres`)
   .then( table => {
     console.log('the tables', table);
   })
