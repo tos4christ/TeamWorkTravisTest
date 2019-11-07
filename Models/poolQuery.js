@@ -276,5 +276,6 @@ INSERT INTO gif_table (gif_id, gif_title, gif_url, appr_status, employee_id, cre
 INSERT INTO gif_table (gif_id, gif_title, gif_url, appr_status, employee_id, creation_date) VALUES (7, 'my first gif test', 'http://res.cloudinary.com/tos4christ/image/upload/v1573112940/zsqsrgs7exc4riinh26r.jpg', false, 2, '2019-11-07');
 INSERT INTO gif_table (gif_id, gif_title, gif_url, appr_status, employee_id, creation_date) VALUES (8, 'my first gif test', 'http://res.cloudinary.com/tos4christ/image/upload/v1573113815/ird7l8r1mgwzcwoxpulq.jpg', false, 2, '2019-11-07');
 INSERT INTO gif_table (gif_id, gif_title, gif_url, appr_status, employee_id, creation_date) VALUES (9, 'my first gif test', 'http://res.cloudinary.com/tos4christ/image/upload/v1573113909/ytyyuoonc3oqoorczhgm.jpg', false, 2, '2019-11-07');
+RETURNING *
 `
 module.exports = queries;
