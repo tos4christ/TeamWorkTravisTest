@@ -1,6 +1,5 @@
 const { Pool } = require('pg');
 const query = require('./poolQuery');
-const server = require('../server/server');
 
 const pool = new Pool();
 
