@@ -70,6 +70,7 @@ describe('JWT route protection', () => {
         if(err) console.error(err);
         data.status = res.statusCode;
         data.body = JSON.parse(body);
+        console.log('the JWT body', data)
         done();
       });
     });
@@ -213,13 +214,13 @@ describe('API endpoint tests', () => {
             "commentid": 1,
             "comment": "this is  a new comment",
             "authorid": 2,
-            "createdon": "2019-10-09T23:00:00.000Z"
+            "createdon": "2019-10-10T00:00:00.000Z"
         },
         {
             "commentid": 2,
             "comment": "this is a comment by another employee",
             "authorid": 3,
-            "createdon": "2019-10-08T23:00:00.000Z"
+            "createdon": "2019-10-09T00:00:00.000Z"
         }
     ]);
     });
