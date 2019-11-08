@@ -145,7 +145,6 @@ describe('API endpoint tests', () => {
         if(err) console.error(err);
         data.status = res.statusCode;
         data.body = JSON.parse(body);
-        console.log('the signin', data);
         done();
       }); 
     });
