@@ -140,6 +140,7 @@ describe('API endpoint tests', () => {
         if(err) console.error(err);
         data.status = res.statusCode;
         data.body = JSON.parse(body);
+        console.log('auth/signin body', data);
         done();
       }); 
     });
@@ -154,7 +155,7 @@ describe('API endpoint tests', () => {
     beforeAll((done) => {
       Request.post({
         headers: {
-          'content-type': 'x-www-form-urlencoded',
+          'content-type': 'application/x-www-form-urlencoded',
           'authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjkwMjMwNywidXNlcm5hbWUiOiJnbnp0cmFkZUBnbWFpbC5jb20iLCJpYXQiOjE1NzMyMjQ2NDEsImV4cCI6MTU3NDY2NDY0MX0.XGlcBEz7rukL9KbrxI2HEcbVSVneFNUD2LTGD09e6Zw'
         },
         url: 'http://localhost:3000/api/v1/articles',
@@ -194,7 +195,7 @@ describe('API endpoint tests', () => {
     beforeAll((done) => {
       Request.get({
         headers: {
-          'content-type': 'x-www-form-urlencoded',
+          'content-type': 'application/x-www-form-urlencoded',
           'authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjkwMjMwNywidXNlcm5hbWUiOiJnbnp0cmFkZUBnbWFpbC5jb20iLCJpYXQiOjE1NzMyMjQ2NDEsImV4cCI6MTU3NDY2NDY0MX0.XGlcBEz7rukL9KbrxI2HEcbVSVneFNUD2LTGD09e6Zw'
         },
         url: 'http://localhost:3000/api/v1/articles/2'
@@ -233,6 +234,7 @@ describe('API endpoint tests', () => {
     beforeAll((done) => {
       var req = Request.post({
         headers: {
+          'content-type': 'application/x-www-form-urlencoded',
           'authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjkwMjMwNywidXNlcm5hbWUiOiJnbnp0cmFkZUBnbWFpbC5jb20iLCJpYXQiOjE1NzMyMjQ2NDEsImV4cCI6MTU3NDY2NDY0MX0.XGlcBEz7rukL9KbrxI2HEcbVSVneFNUD2LTGD09e6Zw'
         },
         url: 'http://localhost:3000/api/v1/gifs'
