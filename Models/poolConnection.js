@@ -1,12 +1,7 @@
 const { Pool } = require('pg');
 const query = require('./poolQuery');
 
-const pool = new Pool({
-  user: process.env.PGUSER,
-  connectionTimeoutMillis: 0,
-  idleTimeoutMillis: 600000,
-  max: 50
-});
+const pool = new Pool();
 
 pool.on('connect', () => console.log('connected to the database'));
 
