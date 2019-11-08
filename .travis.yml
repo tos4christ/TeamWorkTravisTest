@@ -15,7 +15,7 @@ before_script:
   - npm run start
   - psql -c 'create database teamwork;' -U postgres
 
-script:
+after_script:
   - npm run coverage
   
 after_success:
