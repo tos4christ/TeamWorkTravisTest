@@ -35,7 +35,7 @@ pool.query(query.employees_query, (err, res) => {
 
               pool.query(query.insertValue, (err, res) => {
                 if(err) console.error(err);
-                console.log('values inserted successfully', res);
+                console.log('values inserted successfully');
 
                                
             
