@@ -1,6 +1,5 @@
 const Request = require('request');
 const fs = require('fs');
-const db = require('../Models/poolConnection');
 console.log('this one started second');
 
 //DONE
