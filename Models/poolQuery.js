@@ -147,7 +147,7 @@ CREATE SEQUENCE gif_table_gif_id_seq
     CACHE 1;
 ALTER SEQUENCE gif_table_gif_id_seq OWNED BY gif_table.gif_id;`;
 
-queries.one = `INSERT INTO article_comment (article_id, comment_id, employee_id) VALUES (2, 1, 2) RETURNING *`;
+queries.one = `INSERT INTO article_comment(article_id, comment_id, employee_id) VALUES (2, 1, 2) RETURNING *`;
 
 queries.insertValue = `
 INSERT INTO article_comment (article_id, comment_id, employee_id) VALUES (2, 1, 2);
