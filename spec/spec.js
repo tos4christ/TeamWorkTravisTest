@@ -84,7 +84,7 @@ describe('JWT route protection', () => {
       expect(data.status).toBe(200);
     });
     it('Should return a user', () => {
-      expect(data.body["data"]["title"]).toBe('test article');
+      expect(data.body['data']['title']).toBe('test article');
     });
   });
 });
