@@ -249,6 +249,7 @@ describe('API endpoint tests', () => {
       form.append('gifPost', fs.createReadStream('Certificate.jpg'));
       form.append('gif_title', 'my first gif test');
       form.append('appr_status', 'false');
+      form.append('gif_id', '2');
     })
     // spec test
     it('Should return the gif title upon successful creation', () => {
