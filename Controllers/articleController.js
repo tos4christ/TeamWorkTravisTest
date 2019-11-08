@@ -1,10 +1,8 @@
-//const pool = require('../Models/poolConnection');
-const { Pool } = require('pg').Pool;
+const pool = require('../Models/poolConnection');
 const userDetails = require('../utilities/getTokenUser');
 const articleSchema = require('../Models/articleSchema');
 
 const articleController = {};
-const pool = new Pool();
 
 articleController.createArticle = (req, res, next) => {
   const token = req.headers.authorization.split(' ')[1] ? req.headers.authorization.split(' ')[1] : req.headers.authorization;
