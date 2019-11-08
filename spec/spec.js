@@ -207,6 +207,7 @@ describe('API endpoint tests', () => {
         if(err) throw err;
         data.status = res.statusCode;
         data.body = JSON.parse(body);
+        console.log('GET /articles route data', data);
         done();
       });
     });
