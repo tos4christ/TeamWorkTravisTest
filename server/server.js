@@ -9,3 +9,5 @@ const server = http.createServer(app);
 server.listen(port, host, () => {
   console.log(`server listening on port ${port}`);
 });
+
+module.exports = server;
