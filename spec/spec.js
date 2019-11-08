@@ -70,7 +70,7 @@ describe('JWT route protection', () => {
           'authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjkwMjMwNywidXNlcm5hbWUiOiJnbnp0cmFkZUBnbWFpbC5jb20iLCJpYXQiOjE1NzMyMjQ2NDEsImV4cCI6MTU3NDY2NDY0MX0.XGlcBEz7rukL9KbrxI2HEcbVSVneFNUD2LTGD09e6Zw'
         },
         url: 'http://localhost:3000/api/v1/articles',
-        form: {article_id: 1402, title: 'test article', article: 'this is a test article', appr_status: true}
+        form: {article_id: 14022020, title: 'test articles', article: 'this is a test article', appr_status: true}
         }, (err, res, body) => {
         if(err) console.error(err);
         data.status = res.statusCode;
@@ -84,7 +84,7 @@ describe('JWT route protection', () => {
       expect(data.status).toBe(200);
     });
     it('Should return a user', () => {
-      expect(data.body['data']['title']).toBe('test article');
+      expect(data.body['data']['title']).toBe('test articles');
     });
   });
 });
