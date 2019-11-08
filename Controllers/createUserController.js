@@ -1,9 +1,8 @@
 const bcrypt = require('bcrypt');
-//const pool = require('../Models/poolConnection');
+const pool = require('../Models/poolConnection');
 const newUserQuery = require('../Models/newUserModel');
 const jwt = require('jsonwebtoken');
-const { Pool } = require('pg').Pool;
-const pool = new Pool();
+
 
 // create a new user for the new employee inserting their records in the database
 // ensure to hash their password with bcrypt before it goes into the database
