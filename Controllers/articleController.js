@@ -7,12 +7,12 @@ const articleController = {};
 articleController.createArticle = (req, res, next) => {
   const token = req.headers.authorization.split(' ')[1] ? req.headers.authorization.split(' ')[1] : req.headers.authorization;
   const user = userDetails(token);
-  const {title, article, appr_status} = req.body;
+  const { article_id, title, article, appr_status } = req.body;
   const date = Date().split('GMT')[0];
 
   pool.query(articleSchema.getEmployeeId, [user.username])
     .then( id => {
-      pool.query(articleSchema.newArticle, [title, article, appr_status, id.rows[0].employee_id, date])
+      pool.query(articleSchema.newArticle, [article_id, title, article, appr_status, id.rows[0].employee_id, date])
         .then( article => {
           res.status(200).json({
             "status": "Success",

@@ -40,7 +40,7 @@ describe('JWT route protection', () => {
       Request.post({
         headers: {'content-type' : 'application/x-www-form-urlencoded'},
         url: 'http://localhost:3000/api/v1/articles',
-        form: {title: 'test article', article: 'this is a test article', appr_status: true}
+        form: {article_id: 3000, title: 'test article', article: 'this is a test article', appr_status: true}
       },  (err, res, body) => {
         if(err) throw err;
         data.status = res.statusCode;
@@ -65,7 +65,7 @@ describe('JWT route protection', () => {
           'authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjkwMjMwNywidXNlcm5hbWUiOiJnbnp0cmFkZUBnbWFpbC5jb20iLCJpYXQiOjE1NzMwNDY5MTAsImV4cCI6MTU3NDQ4NjkxMH0.n8xrcKWf50alH9hlLCB5QXs8VjmZxANY61D8mtKmeXg'
         },
         url: 'http://localhost:3000/api/v1/articles',
-        form: {title: 'test article', article: 'this is a test article', appr_status: true}
+        form: {article_id: 10000, title: 'test article', article: 'this is a test article', appr_status: true}
         }, (err, res, body) => {
         if(err) console.error(err);
         data.status = res.statusCode;

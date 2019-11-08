@@ -1,7 +1,6 @@
 const queries = {};
 
 queries.admin_table_query = `
-DROP TABLE IF EXISTS admin_table;
 CREATE TABLE admin_table
 (
   admin_id integer NOT NULL,
@@ -27,7 +26,6 @@ CREATE SEQUENCE admin_table_admin_id_seq
 ALTER SEQUENCE admin_table_admin_id_seq OWNED BY admin_table.admin_id;`
 
 queries.article_comment_query = `
-DROP TABLE IF EXISTS article_comment;
 CREATE TABLE article_comment
 (
   article_id integer NOT NULL,
@@ -46,7 +44,6 @@ CREATE TABLE article_comment
 );`
 
 queries.articles_query = `
-DROP TABLE IF EXISTS articles;
 CREATE TABLE articles( article_id integer NOT NULL,
   article_title text NOT NULL,
   article_text text NOT NULL,
@@ -66,7 +63,6 @@ CREATE SEQUENCE articles_article_id_seq
 ALTER SEQUENCE articles_article_id_seq OWNED BY articles.article_id; `
 
 queries.comments_table_query = `
-DROP TABLE IF EXISTS comments_table;
 CREATE TABLE comments_table
 (
   comment_id integer NOT NULL,
@@ -87,7 +83,6 @@ CREATE SEQUENCE comments_table_comment_id_seq
 ALTER SEQUENCE comments_table_comment_id_seq OWNED BY comments_table.comment_id; `
 
 queries.employees_query = `
-DROP TABLE IF EXISTS employees;
 CREATE TABLE employees
 (
   employee_id integer NOT NULL,
@@ -113,7 +108,6 @@ CREATE SEQUENCE employees_employee_id_seq
 ALTER SEQUENCE employees_employee_id_seq OWNED BY employees.employee_id; `
 
 queries.gif_comment_query = `
-DROP TABLE IF EXISTS gif_comment;
 CREATE TABLE gif_comment
 (
   gif_id integer NOT NULL,
@@ -132,7 +126,6 @@ CREATE TABLE gif_comment
 ); `
 
 queries.gif_table_query = `
-DROP TABLE IF EXISTS gif_table;
 CREATE TABLE gif_table
 (
   gif_id integer NOT NULL,
