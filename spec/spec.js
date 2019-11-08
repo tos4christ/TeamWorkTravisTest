@@ -159,6 +159,7 @@ describe('API endpoint tests', () => {
         },
         url: 'http://localhost:3000/api/v1/articles',
         form: {
+          article_id: 20000,
           title: 'my test article',
           article: 'this is a test article creation',
           appr_status: false
@@ -201,6 +202,7 @@ describe('API endpoint tests', () => {
         if(err) throw err;
         data.status = res.statusCode;
         data.body = JSON.parse(body);
+        console.log('this is the data', data);
         done();
       });
     });
