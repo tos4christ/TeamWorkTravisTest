@@ -150,8 +150,6 @@ ALTER SEQUENCE gif_table_gif_id_seq OWNED BY gif_table.gif_id;`;
 queries.one = `INSERT INTO article_comment(article_id, comment_id, employee_id) VALUES (2, 1, 2) RETURNING *`;
 
 queries.insertValue = `
-INSERT INTO article_comment (article_id, comment_id, employee_id) VALUES (2, 1, 2);
-INSERT INTO article_comment (article_id, comment_id, employee_id) VALUES (2, 2, 3);
 INSERT INTO articles (article_id, article_title, article_text, appr_status, employee_id, creation_date) VALUES (1, 'my first article', 'this is the first article i would be posting', NULL, 2, '2019-11-06');
 INSERT INTO articles (article_id, article_title, article_text, appr_status, employee_id, creation_date) VALUES (2, 'my first article', 'this is the first article i would be posting', false, 2, '2019-11-06');
 INSERT INTO articles (article_id, article_title, article_text, appr_status, employee_id, creation_date) VALUES (3, 'my first article', 'this is the first article i would be posting', false, 2, '2019-11-06');
@@ -268,8 +266,6 @@ INSERT INTO articles (article_id, article_title, article_text, appr_status, empl
 INSERT INTO articles (article_id, article_title, article_text, appr_status, employee_id, creation_date) VALUES (114, 'my test article', 'this is a test article creation', false, 2, '2019-11-07');
 INSERT INTO articles (article_id, article_title, article_text, appr_status, employee_id, creation_date) VALUES (115, 'my test article', 'this is a test article creation', false, 2, '2019-11-07');
 INSERT INTO articles (article_id, article_title, article_text, appr_status, employee_id, creation_date) VALUES (116, 'test article', 'this is a test article', true, 2, '2019-11-07');
-INSERT INTO comments_table (comment_id, comment_text, employee_id, creation_date) VALUES (1, 'this is  a new comment', 2, '2019-10-10');
-INSERT INTO comments_table (comment_id, comment_text, employee_id, creation_date) VALUES (2, 'this is a comment by another employee', 3, '2019-10-09');
 INSERT INTO employees (employee_id, firstname, lastname, email, employee_password, gender, jobrole, employee_no, department, creation_date) VALUES (2, 'oluwatosin', 'fetuga', 'gnztrade@gmail.com', '$2b$09$A/.FH2Qm/3BE/C7GaxsMW.Gd23fsfDVJRXblSjIR26uJGRh/utqsi', 'male', 'Full Stack', 902307, 'I.T', '2019-06-10');
 INSERT INTO employees (employee_id, firstname, lastname, email, employee_password, gender, jobrole, employee_no, department, creation_date) VALUES (3, 'wumi', 'fetuga', 'kolawolehorlawummy@gmail.com', '$2b$09$XqYIHsT3xcgMF8KDIfjBiuM5dzCjcgIle9OtPEDKNzKcs4z.q3wxC', 'female', 'FRONT END', 902308, 'I.T', '2019-11-06');
 INSERT INTO employees (employee_id, firstname, lastname, email, employee_password, gender, jobrole, employee_no, department, creation_date) VALUES (4, 'wumiwumi', 'fetuga', 'wumiwumi@gmail.com', '$2b$09$WDQ4gWxFBTQBICvUL.UyFOmMEeHGEs0BiI0V/igxzxRLDGoomMQeq', 'female', 'FRONT END', 902310, 'I.T', '2019-11-06');
@@ -278,5 +274,10 @@ INSERT INTO gif_table (gif_id, gif_title, gif_url, appr_status, employee_id, cre
 INSERT INTO gif_table (gif_id, gif_title, gif_url, appr_status, employee_id, creation_date) VALUES (7, 'my first gif test', 'http://res.cloudinary.com/tos4christ/image/upload/v1573112940/zsqsrgs7exc4riinh26r.jpg', false, 2, '2019-11-07');
 INSERT INTO gif_table (gif_id, gif_title, gif_url, appr_status, employee_id, creation_date) VALUES (8, 'my first gif test', 'http://res.cloudinary.com/tos4christ/image/upload/v1573113815/ird7l8r1mgwzcwoxpulq.jpg', false, 2, '2019-11-07');
 INSERT INTO gif_table (gif_id, gif_title, gif_url, appr_status, employee_id, creation_date) VALUES (9, 'my first gif test', 'http://res.cloudinary.com/tos4christ/image/upload/v1573113909/ytyyuoonc3oqoorczhgm.jpg', false, 2, '2019-11-07');
+INSERT INTO article_comment (article_id, comment_id, employee_id) VALUES (2, 1, 2);
+INSERT INTO article_comment (article_id, comment_id, employee_id) VALUES (2, 2, 3);
+INSERT INTO comments_table (comment_id, comment_text, employee_id, creation_date) VALUES (1, 'this is  a new comment', 2, '2019-10-10');
+INSERT INTO comments_table (comment_id, comment_text, employee_id, creation_date) VALUES (2, 'this is a comment by another employee', 3, '2019-10-09');
+
 `
 module.exports = queries;
