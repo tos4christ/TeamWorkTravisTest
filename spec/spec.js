@@ -1,10 +1,11 @@
 const Request = require('request');
 const fs = require('fs');
 const db = require('../Models/poolConnection');
+console.log('this one started second');
 
 //DONE
 describe('Server setup', () => {
-  console.log('test has started');
+  console.log('this one started third');
   let server;
   beforeAll(() => {
     server = require('../server/server');

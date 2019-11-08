@@ -1,5 +1,6 @@
 const http = require('http');
 const app = require('../app/app');
+require('../Models/poolConnection');
 
 console.log('this one started first');
 
