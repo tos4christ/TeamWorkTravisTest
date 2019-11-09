@@ -8,7 +8,7 @@ const gifController = {};
 gifController.createGif = (req, res, next) => {
   const token = req.headers.authorization.split(' ')[1] ? req.headers.authorization.split(' ')[1] : req.headers.authorization;
   const user = userDetails(token);
-  const {gif_id, gif_title, appr_status} = req.body;
+  const {gif_title, appr_status} = req.body;
 
   // cloudinary implementation
   let filename = req.files.gifPost.path;
@@ -25,7 +25,7 @@ gifController.createGif = (req, res, next) => {
       // Pool connection goes here
       pool.query(gifSchema.getEmployeeId, [user.username])
         .then( id => {
-          pool.query(gifSchema.newGif, [gif_id, gif_title, fileUrl, appr_status, id.rows[0].employee_id, date])
+          pool.query(gifSchema.newGif, [gif_title, fileUrl, appr_status, id.rows[0].employee_id, date])
             .then( gif => {
               res.status(200).json({
                 "status": "success",

@@ -1,6 +1,6 @@
 const gifSchema = {};
 
-gifSchema.newGif = `INSERT INTO gif_table(gif_id, gif_title, gif_url, appr_status, employee_id, creation_date) VALUES($1, $2, $3, $4, $5, $6) RETURNING *`;
+gifSchema.newGif = `INSERT INTO gif_table(gif_title, gif_url, appr_status, employee_id, creation_date) VALUES($1, $2, $3, $4, $5, $6) RETURNING *`;
 
 gifSchema.getAGifText = `select a.article_id as id, a.creation_date as createdOn, a.article_title as title, a.article_text as article from articles a where a.article_id=$1`;
 

@@ -164,7 +164,6 @@ describe('API endpoint tests', () => {
         },
         url: 'http://localhost:3000/api/v1/articles',
         form: {
-          article_id: 201236556,
           title: 'my test article',
           article: 'this is a test article creation',
           appr_status: false
@@ -173,6 +172,7 @@ describe('API endpoint tests', () => {
         if(err) throw err;
         data.status = res.statusCode;
         data.body = JSON.parse(body);
+        console.log('the article data', data);
         done();
       });
     });
@@ -245,6 +245,7 @@ describe('API endpoint tests', () => {
         if(err) console.error(err);
         data.status = res.statusCode;
         data.body = JSON.parse(body);
+        console.log('the gif post data', data);
         done();
       });
 
@@ -252,7 +253,7 @@ describe('API endpoint tests', () => {
       form.append('gifPost', fs.createReadStream('Certificate.jpg'));
       form.append('gif_title', 'my first gif test');
       form.append('appr_status', 'false');
-      form.append('gif_id', '23');
+      // form.append('gif_id', '23');
     })
     // spec test
     it('Should return the gif title upon successful creation', () => {
