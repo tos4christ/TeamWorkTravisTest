@@ -75,7 +75,6 @@ describe('JWT route protection', () => {
         if(err) console.error(err);
         data.status = res.statusCode;
         data.body = JSON.parse(body);
-        console.log('the JWT body', data)
         done();
       });
     });
@@ -173,6 +172,7 @@ describe('API endpoint tests', () => {
         if(err) throw err;
         data.status = res.statusCode;
         data.body = JSON.parse(body);
+        console.log('this is the body', data);
         done();
       });
     });
@@ -207,6 +207,7 @@ describe('API endpoint tests', () => {
         if(err) throw err;
         data.status = res.statusCode;
         data.body = JSON.parse(body);
+        console.log('the article gotten', data);
         done();
       });
     });
