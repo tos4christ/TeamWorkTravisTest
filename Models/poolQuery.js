@@ -4,7 +4,7 @@ queries.admin_table_query = `
 
 CREATE TABLE admin_table
 (
-  admin_id integer NOT NULL,
+  admin_id SERIAL NOT NULL,
   firstname text NOT NULL,
   lastname text NOT NULL,
   email text NOT NULL,
@@ -29,7 +29,7 @@ ALTER SEQUENCE admin_table_admin_id_seq OWNED BY admin_table.admin_id;`
 queries.article_comment_query = `
 CREATE TABLE article_comment
 (
-  article_id integer NOT NULL,
+  article_id SERIAL NOT NULL,
   comment_id integer NOT NULL,
   employee_id integer NOT NULL,
   CONSTRAINT article_comment_pkey PRIMARY KEY (article_id, comment_id, employee_id),
@@ -45,7 +45,7 @@ CREATE TABLE article_comment
 );`
 
 queries.articles_query = `
-CREATE TABLE articles( article_id integer NOT NULL,
+CREATE TABLE articles( article_id SERIAL NOT NULL,
   article_title text NOT NULL,
   article_text text NOT NULL,
   appr_status boolean,
@@ -66,7 +66,7 @@ ALTER SEQUENCE articles_article_id_seq OWNED BY articles.article_id; `
 queries.comments_table_query = `
 CREATE TABLE comments_table
 (
-  comment_id integer NOT NULL,
+  comment_id SERIAL NOT NULL,
   comment_text text NOT NULL,
   employee_id integer,
   creation_date date NOT NULL,
@@ -86,7 +86,7 @@ ALTER SEQUENCE comments_table_comment_id_seq OWNED BY comments_table.comment_id;
 queries.employees_query = `
 CREATE TABLE employees
 (
-  employee_id integer NOT NULL,
+  employee_id SERIAL NOT NULL,
   firstname text NOT NULL,
   lastname text NOT NULL,
   email text NOT NULL,
@@ -111,7 +111,7 @@ ALTER SEQUENCE employees_employee_id_seq OWNED BY employees.employee_id; `
 queries.gif_comment_query = `
 CREATE TABLE gif_comment
 (
-  gif_id integer NOT NULL,
+  gif_id SERIAL NOT NULL,
   comment_id integer NOT NULL,
   employee_id integer NOT NULL,
   CONSTRAINT gif_comment_pkey PRIMARY KEY (gif_id, comment_id, employee_id),
@@ -129,7 +129,7 @@ CREATE TABLE gif_comment
 queries.gif_table_query = `
 CREATE TABLE gif_table
 (
-  gif_id integer NOT NULL,
+  gif_id SERIAL NOT NULL,
   gif_title text NOT NULL,
   gif_url text NOT NULL,
   appr_status boolean,
