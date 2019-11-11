@@ -1,10 +1,8 @@
 const Request = require('request');
 const fs = require('fs');
-console.log('this one started second');
 
 //DONE
 describe('Server setup', () => {
-  console.log('this one started third');
   let server;
   beforeAll(() => {
     server = require('../server/server');
@@ -40,7 +38,7 @@ describe('JWT route protection', () => {
       Request.post({
         headers: {'content-type' : 'application/x-www-form-urlencoded'},
         url: 'http://localhost:3000/api/v1/articles',
-        form: {article_id: 3000, title: 'test article', article: 'this is a test article', appr_status: true}
+        form: {title: 'test article', article: 'this is a test article', appr_status: true}
       },  (err, res, body) => {
         if(err) throw err;
         data.status = res.statusCode;
@@ -57,11 +55,6 @@ describe('JWT route protection', () => {
   });
 
   describe('authenticated user should access protected routes', () => {
-
-    /*
-    Ensure you change the id numbers for every test so as not to create an item that is already existing
-    
-    */
     const data = {};
     beforeAll((done) => {
       Request.post({
@@ -70,7 +63,7 @@ describe('JWT route protection', () => {
           'authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjkwMjMwNywidXNlcm5hbWUiOiJnbnp0cmFkZUBnbWFpbC5jb20iLCJpYXQiOjE1NzMyMjQ2NDEsImV4cCI6MTU3NDY2NDY0MX0.XGlcBEz7rukL9KbrxI2HEcbVSVneFNUD2LTGD09e6Zw'
         },
         url: 'http://localhost:3000/api/v1/articles',
-        form: {article_id: 101010, title: 'test articles', article: 'this is a test article', appr_status: true}
+        form: {title: 'test articles', article: 'this is a test article', appr_status: true}
         }, (err, res, body) => {
         if(err) console.error(err);
         data.status = res.statusCode;
@@ -163,7 +156,6 @@ describe('API endpoint tests', () => {
         },
         url: 'http://localhost:3000/api/v1/articles',
         form: {
-          article_id: 202020,
           title: 'my test article',
           article: 'this is a test article creation',
           appr_status: false
@@ -172,7 +164,6 @@ describe('API endpoint tests', () => {
         if(err) throw err;
         data.status = res.statusCode;
         data.body = JSON.parse(body);
-        console.log('this is the body', data);
         done();
       });
     });
@@ -181,16 +172,27 @@ describe('API endpoint tests', () => {
       expect(data.body['data']['message']).toBe('Article successfully posted');
     });
   });
-
-  describe('PATCH /articles/:articleId', () => {
-
-  });
-
+// Done
   describe('DELETE /articles/:articleId', () => {
-
-  });
-
-  describe('POST /articles/:articleId/comment', () => {
+    const data = {};
+    beforeAll((done) => {
+      Request.delete({
+        headers: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjkwMjMwNywidXNlcm5hbWUiOiJnbnp0cmFkZUBnbWFpbC5jb20iLCJpYXQiOjE1NzMyMjQ2NDEsImV4cCI6MTU3NDY2NDY0MX0.XGlcBEz7rukL9KbrxI2HEcbVSVneFNUD2LTGD09e6Zw'
+        },
+        url: 'http://localhost:3000/api/v1/articles/81'
+      }, (err, resp, body) => {
+        if(err) throw err;
+        data.status = resp.statusCode;
+        data.body = JSON.parse(body);
+        done();
+      })
+    });
+    // test specs
+    it('Should delete an article', () => {
+      expect(data.body["data"]["message"]).toBe("Article successfully deleted");
+    });
 
   });
 // DONE
@@ -207,7 +209,6 @@ describe('API endpoint tests', () => {
         if(err) throw err;
         data.status = res.statusCode;
         data.body = JSON.parse(body);
-        console.log('the article gotten', data);
         done();
       });
     });
@@ -215,21 +216,8 @@ describe('API endpoint tests', () => {
     it('Should return an article with article id equals to 2', () => {
       expect(data.body['data']['id']).toBe(2);
     });
-    it('Should return an article with comments', () => {
-      expect(data.body['data']['comments']).toEqual([
-        {
-            "commentid": 1,
-            "comment": "this is  a new comment",
-            "authorid": 2,
-            "createdon": "2019-10-10T00:00:00.000Z"
-        },
-        {
-            "commentid": 2,
-            "comment": "this is a comment by another employee",
-            "authorid": 3,
-            "createdon": "2019-10-09T00:00:00.000Z"
-        }
-    ]);
+    it('Should return an article with title', () => {
+      expect(data.body['data']['title']).toEqual("the changed article title");
     });
   });
 // DONE
@@ -253,7 +241,7 @@ describe('API endpoint tests', () => {
       form.append('gifPost', fs.createReadStream('Certificate.jpg'));
       form.append('gif_title', 'my first gif test');
       form.append('appr_status', 'false');
-      form.append('gif_id', '303030');
+      // form.append('gif_id', '303030');
     })
     // spec test
     it('Should return the gif title upon successful creation', () => {
@@ -264,24 +252,169 @@ describe('API endpoint tests', () => {
     });
 
   });
+// Done
+  describe('PATCH /articles/:articleId', () => {
 
+    const data = {};
+    beforeAll((done) => {
+      Request.patch({
+        headers: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjkwMjMwNywidXNlcm5hbWUiOiJnbnp0cmFkZUBnbWFpbC5jb20iLCJpYXQiOjE1NzMyMjQ2NDEsImV4cCI6MTU3NDY2NDY0MX0.XGlcBEz7rukL9KbrxI2HEcbVSVneFNUD2LTGD09e6Zw'
+        },
+        url: 'http://localhost:3000/api/v1/articles/3',
+        form: {
+          title: 'updated article title',
+          article: 'this is a test article update'
+        }
+      }, (err, res, body) => {
+        if(err) throw err;
+        data.status = res.statusCode;
+        data.body = JSON.parse(body);
+        done();
+      });
+    });
+    //test spec
+    it('Should update and article and return the article id', () => {
+      expect(data.body['data']['title']).toBe('updated article title');
+    });
+
+  });
+// Done
   describe('POST /gifs/:gifId/comment', () => {
-
+    const data = {};
+    beforeAll((done) => {
+      Request.post({
+        headers: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjkwMjMwNywidXNlcm5hbWUiOiJnbnp0cmFkZUBnbWFpbC5jb20iLCJpYXQiOjE1NzMyMjQ2NDEsImV4cCI6MTU3NDY2NDY0MX0.XGlcBEz7rukL9KbrxI2HEcbVSVneFNUD2LTGD09e6Zw'
+        },
+        url: 'http://localhost:3000/api/v1/gifs/7/comment',
+        form: {
+          "comments": "This is a new gif comment"
+        }
+      }, (err, res, body) => {
+        if(err) throw err;
+        data.status = res.statusCode;
+        data.body = JSON.parse(body);
+        done();
+      });
+    });
+    //test spec
+    it('should return a status code of 200', () => {
+      expect(data.status).toBe(200);
+    });
+    it('Should return the new gif comment created', () => {
+      expect(data.body["data"]["comment"]).toEqual("This is a new gif comment")
+    });
   });
-
-  describe('PATCH /gifs/:gifId', () => {
-
-  });
-
+// Done
   describe('GET /gifs/:gifId', () => {
+    const data = {};
+    beforeAll((done) => {
+      Request.get({
+        headers: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjkwMjMwNywidXNlcm5hbWUiOiJnbnp0cmFkZUBnbWFpbC5jb20iLCJpYXQiOjE1NzMyMjQ2NDEsImV4cCI6MTU3NDY2NDY0MX0.XGlcBEz7rukL9KbrxI2HEcbVSVneFNUD2LTGD09e6Zw'
+          },
+          url: 'http://localhost:3000/api/v1/gifs/7'
+        }, (err, res, body) => {
+          if(err) throw err;
+          data.status = res.statusCode;
+          data.body = JSON.parse(body);
+          done();
+      });
+    });
+    //test spec
+    it('should return a status code of 200', () => {
+      expect(data.status).toBe(200);
+    });
+    it('Should return the gif Title', () => {
+      expect(data.body["data"]["title"]).toEqual("my first gif test");
+    });
 
   });
-
+// Done
   describe('GET /feed', () => {
 
-  });
+    const data = {};
+    beforeAll((done) => {
+      Request.get({
+        headers: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjkwMjMwNywidXNlcm5hbWUiOiJnbnp0cmFkZUBnbWFpbC5jb20iLCJpYXQiOjE1NzMyMjQ2NDEsImV4cCI6MTU3NDY2NDY0MX0.XGlcBEz7rukL9KbrxI2HEcbVSVneFNUD2LTGD09e6Zw'
+        },
+        url: 'http://localhost:3000/api/v1/feed'
+      }, (err, resp, body) => {
+        if(err) throw err;
+        data.status = resp.statusCode;
+        data.body = JSON.parse(body);
+        done();
+      })
+    });
+    // test specs
+    it('Should return a status code of 200', () => {
+      expect(data.body["status"]).toBe("success");
+    });
+    it('Should fetch most recent feeds', () => {
+      expect(data.body["data"].length).toBe(20);
+    });
 
+  });
+// Done
   describe('DELETE /gifs/:gifId', () => {
+
+    const data = {};
+    beforeAll((done) => {
+      Request.delete({
+        headers: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjkwMjMwNywidXNlcm5hbWUiOiJnbnp0cmFkZUBnbWFpbC5jb20iLCJpYXQiOjE1NzMyMjQ2NDEsImV4cCI6MTU3NDY2NDY0MX0.XGlcBEz7rukL9KbrxI2HEcbVSVneFNUD2LTGD09e6Zw'
+        },
+        url: 'http://localhost:3000/api/v1/gifs/9'
+      }, (err, resp, body) => {
+        if(err) throw err;
+        data.status = resp.statusCode;
+        data.body = JSON.parse(body);
+        done();
+      })
+    });
+    // test specs
+    it('Should delete a gif post', () => {
+      expect(data.body["data"]["message"]).toBe("gif post successfully deleted");
+    });
+    it('Should send a status of 200', () => {
+      expect(data["status"]).toBe(200);
+    });
+
+  });
+// Done
+   describe('POST /articles/:articleId/comment', () => {
+    const data = {};
+    beforeAll((done) => {
+      Request.post({
+        headers: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjkwMjMwNywidXNlcm5hbWUiOiJnbnp0cmFkZUBnbWFpbC5jb20iLCJpYXQiOjE1NzMyMjQ2NDEsImV4cCI6MTU3NDY2NDY0MX0.XGlcBEz7rukL9KbrxI2HEcbVSVneFNUD2LTGD09e6Zw'
+        },
+        url: 'http://localhost:3000/api/v1/articles/7/comment',
+        form: {
+          "comments": "This is a new article comment"
+        }
+      }, (err, res, body) => {
+        if(err) throw err;
+        data.status = res.statusCode;
+        data.body = JSON.parse(body);
+        done();
+      });
+    });
+    //test spec
+    it('should return a status code of 200', () => {
+      expect(data.status).toBe(200);
+    });
+    it('Should return the new article comment created', () => {
+      expect(data.body["data"]["comment"]).toEqual("This is a new article comment")
+    });
 
   });
 

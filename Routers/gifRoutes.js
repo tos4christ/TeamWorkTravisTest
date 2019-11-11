@@ -5,20 +5,10 @@ const gifController = require('../Controllers/gifController');
 
 router.post('/', multipartMiddleware, gifController.createGif);
 
-router.get('/', (req, res, next) => {
+router.get('/:gifId', gifController.getAGif);
 
-});
+router.delete('/:gifId', gifController.deleteAGif );
 
-router.patch('/:gifId', (req, res, next) => {
-
-});
-
-router.get('/:gifId', (req, res, next) => {
-
-});
-
-router.delete('/:gifId', (req, res, next) => {
-
-});
+router.post('/:gifId/comment', gifController.postAGifComment );
 
 module.exports = router;

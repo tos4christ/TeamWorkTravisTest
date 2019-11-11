@@ -1,27 +1,26 @@
 const pool = require('../Models/poolConnection');
-const feeds = require('../Models/articleSchema');
+const feedSchema = require('../Models/feedSchema');
+
+const sortFunction = (a, b) => {
+  return a - b;
+}
 
 const getFeed = (req, res, next) => {
 
-  pool.query(articleSchema.getAnArticleText, [req.params.articleId])
-    .then( article => {
-      pool.query(articleSchema.getAnArticleComment, [req.params.articleId])
-        .then( comments => {
+  pool.query(feedSchema.article)
+    .then( article => {  
+      pool.query(feedSchema.gif)
+        .then( gif => {
+          const feedRow = [...article.rows, ...gif.rows]
+          feedRow.sort( (a,b) => b.createdOn - a.createdOn );
           res.status(200).json({
             "status": "success",
-            "data": {
-              "id": article.rows[0].id,
-              "createdOn": article.rows[0].createdOn,
-              "title": article.rows[0].title,
-              "article": article.rows[0].article,
-              "comments": comments.rows
-            }
-          });
+            "data": feedRow
+          });  
         })
-        .catch( e => next(e));
+        .catch( e => next(e));  
     })
     .catch( e => next(e));
-
 }
 
 module.exports = getFeed;

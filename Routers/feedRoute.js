@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const feedController = require('../Controllers/feedController');
-const feedQuery = '';
 
-router.get('/feed', feedController);
+router.get('/', feedController);
 
 module.exports = router;
