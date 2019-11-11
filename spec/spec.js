@@ -356,9 +356,6 @@ describe('API endpoint tests', () => {
     it('Should return a status code of 200', () => {
       expect(data.body["status"]).toBe("success");
     });
-    it('Should fetch most recent feeds', () => {
-      expect(data.body["status"]).toBe("success");
-    });
 
   });
 // Done
