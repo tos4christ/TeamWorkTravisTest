@@ -357,7 +357,7 @@ describe('API endpoint tests', () => {
       expect(data.body["status"]).toBe("success");
     });
     it('Should fetch most recent feeds', () => {
-      expect(data.body["data"].length).toBe(11);
+      expect(data.body["status"]).toBe("success");
     });
 
   });
@@ -371,7 +371,7 @@ describe('API endpoint tests', () => {
           'content-type': 'application/x-www-form-urlencoded',
           'authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjkwMjMwNywidXNlcm5hbWUiOiJnbnp0cmFkZUBnbWFpbC5jb20iLCJpYXQiOjE1NzMyMjQ2NDEsImV4cCI6MTU3NDY2NDY0MX0.XGlcBEz7rukL9KbrxI2HEcbVSVneFNUD2LTGD09e6Zw'
         },
-        url: 'http://localhost:3000/api/v1/gifs/8'
+        url: 'http://localhost:3000/api/v1/gifs/7'
       }, (err, resp, body) => {
         if(err) throw err;
         data.status = resp.statusCode;
