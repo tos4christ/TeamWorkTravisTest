@@ -26,7 +26,6 @@ app.use('/api/v1', routeAdmin);
 // catch 404 error and send to error handler
 app.use((req, res, next) => {
   const err = new Error('Not Found at all');
-  res.statusCode = 404;
   err.status = 404;
   next(err);
 });

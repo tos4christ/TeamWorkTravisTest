@@ -5,7 +5,7 @@ const jwtCheck = (req, res, next) => {
   if(!req.headers.authorization) {
     const err = new Error('Unauthorized access 1');
     res.status(401);
-    res.status(401);
+    err.status = 401;
     next(err);
   }
   if(req.headers.authorization) {
@@ -15,7 +15,8 @@ const jwtCheck = (req, res, next) => {
       
       if(!tokers) {
         const err = new Error('Unauthorized access 2');
-        res.status(410);''
+        res.status(410);
+        err.status = 401;
         next(err);
       } else  if(tokers) {
         res.status(200);
