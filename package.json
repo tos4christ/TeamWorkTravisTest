@@ -4,13 +4,13 @@
   "description": "an internal scoial network for employees of an organization",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon server/server",
-    "test-init": "./node_modules/jasmine/bin/jasmine.js init",
-    "test": "jasmine",
-    "coverage": "istanbul cover ./node_modules/jasmine/bin/jasmine.js",
+    "start": "npm run build && npm run db",
+    "test-init": "node ./node_modules/jasmine/bin/jasmine.js init",
+    "test": "jasmine build/spec/spec.js",
+    "coverage": "istanbul cover ./node_modules/jasmine/bin/jasmine.js build/spec/spec.js",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "build": "babel server -d build",
-    "db": "node Models/poolConnection"
+    "build": "babel app -d build",
+    "db": "node build/Models/poolConnection"
   },
   "repository": {
     "type": "git",
